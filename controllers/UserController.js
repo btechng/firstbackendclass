@@ -21,7 +21,7 @@ const Signup = async (req, res) => {
     res.status(200).json({
       _id: UserResult._id,
       name: UserResult.name,
-      email: taskResult.email,
+      email: UserResult.email,
       password: UserResult.email,
     });
   } catch (error) {
