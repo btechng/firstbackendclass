@@ -22,7 +22,7 @@ const Signup = async (req, res) => {
       _id: UserResult._id,
       name: UserResult.name,
       email: UserResult.email,
-      password: UserResult.email,
+      password: UserResult.password,
     });
   } catch (error) {
     ///handling server error message
