@@ -30,6 +30,36 @@ const Signup = async (req, res) => {
   }
 };
 
+const Login = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    ///to check if task exist in our database under task collection
+    const checkUser = await UserModel.find({ email });
+    if (!checkUser) {
+      res.status(405).json({
+        message: "Invalid  User",
+      });
+    }
+    const validPassword = await bcrypt.compare(password, checkUser.password);
+    if (!validPassword) {
+      return res.status(619).json({
+        message: "Invalid Password",
+      });
+    }
+
+    res.status(200).json({
+      _id: checkUser._id,
+      name: checkUser.name,
+      email: checkUser.email,
+      password: checkUser.password,
+    });
+  } catch (error) {
+    ///handling server error message
+    res.status(400).json({ message: "Failed to Fetch data" });
+  }
+};
+
 module.exports = {
   Signup,
+  Login,
 };
