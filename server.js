@@ -11,11 +11,10 @@ const app = express();
 app.use(cors());
 connectDB();
 const PORT = process.env.PORT;
-const jsonParser = bodyParser.json();
-app.use(jsonParser);
+app.use(bodyParser.json());
 
-app.use("/Task", taskRoutes);
-app.use("/api/task/users", userRoutes);
+app.use("/Task", taskRoutes); // Task routes
+app.use("/api/task/users", userRoutes); // User routes with unique routing
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`.blue);
