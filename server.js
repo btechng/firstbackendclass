@@ -15,7 +15,7 @@ const jsonParser = bodyParser.json();
 app.use(jsonParser);
 
 app.use("/Task", taskRoutes);
-app.use("/api/users", userRoutes);
+app.use("/api/task/users", userRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`.blue);
